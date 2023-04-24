@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Formulaire de contact</h1>
+    </div>
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        {{ form(form) }}
+    </div>
+{% endblock %}

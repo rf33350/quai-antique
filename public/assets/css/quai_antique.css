@@ -1,0 +1,43 @@
+* {
+    font-family: Lora, Montserrat, Hind Madurai ;
+}
+
+h1  {
+    font-family: Montserrat;
+}
+.navbar{
+    background-color: #B6AC97;
+    border-radius: 5px;
+}
+
+.nav-link{
+    color: #47555E;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+.facebook {
+    width: 25px;
+    height: auto;
+}
+
+.instagram {
+    width: 25px;
+    height: auto;
+}
+
+.logout {
+    display: none;
+}
+
+.footer{
+    background-color: #B6AC97;
+    border-radius: 5px;
+}
+
+.footer-text {
+    color: #47555E;
+}

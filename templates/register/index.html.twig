@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Inscription</h1>
+    </div>
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-warning mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        {{ form(form) }}
+    </div>
+{% endblock %}
+
