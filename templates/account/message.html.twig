@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Changement de mes informations complémentaires</h1>
+    </div>
+    <div class="mx-2">
+        <hr>
+        <a href="{{ path('account') }}">Retour à mon compte</a>
+        <hr>
+        {% if notification %}
+            <div class="alert alert-info">{{ notification }}</div>
+        {% endif %}
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

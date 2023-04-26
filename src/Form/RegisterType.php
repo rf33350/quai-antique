@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -65,17 +67,33 @@ class RegisterType extends AbstractType
                     new Assert\Length(['min' => 2, 'max' => 255]),
                 ],
             ])
-            ->add('password', TextType::class,[
+            ->add('password', RepeatedType::class,[
+                'type' => PasswordType::class,
+                'invalid_message' => 'Le mot de passe et la confirmation doivent être identiques',
                 'attr' => [
                     'class' => 'form-control',
                     'minlenght' => '2',
                     'maxlenght' => '255',
-                    'placeholder' => 'Merci de renseigner votre mot de passe',
                 ],
-                'label' => 'Mot de passe',
-                'label_attr' => [
-                    'class' => 'form-label mt-4',
+                'first_options' => [
+                    'label' => 'Mot de passe',
+                    'label_attr' => [
+                        'class' => 'form-label mt-4',
+                    ],
+                    'attr' => [
+                        'placeholder' => 'Merci de saisir votre mot de passe',
+                    ],
                 ],
+                'second_options' => [
+                    'label' => 'Confirmez votre mot de passe',
+                    'label_attr' => [
+                        'class' => 'form-label mt-4',
+                    ],
+                    'attr' => [
+                        'placeholder' => 'Merci de confirmer votre mot de passe',
+                    ],
+                ],
+                'required' => true,
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length(['min' => 2, 'max' => 255]),

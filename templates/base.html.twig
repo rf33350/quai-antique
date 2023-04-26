@@ -19,15 +19,12 @@
                 <a href="{{ path('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none mr-2">
                     <img src="{{ asset('assets/img/logo.PNG') }}" alt="logo du site" class="logo">
                 </a>
-
         </div>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-
-        <div class="collapse navbar-collapse" id="navbarsExample04 flex">
+            <!--
+            <div class="collapse navbar-collapse" id="navbarsExample04 flex">
             <div class="navbar-nav">
                 <a class="nav-link active" href="{{ path('menu') }}">Menus</a>
                 <a class="nav-link active" href="{{ path('card') }}">Carte</a>
@@ -36,10 +33,61 @@
                 <a class="nav-link active" href="{{ path('reservation') }}">Réservation</a>
             </div>
             <div class="navbar-nav flex-end">
-                <a class="nav-link active" href="#"><button type="button" class="nav-link btn btn-dark">Connexion</button></a>
-                <a class="nav-link active logout" href="#"><button type="button" class="nav-link btn btn-dark">Déconnexion</button></a>
-                <a class="nav-link active" href="{{ path('register') }}"><button type="button" class="nav-link btn btn-dark">Inscription</button></a>
+                {% if app.user %}
+                    <a class="nav-link active" href="{{ path('account') }}"><button type="button" class="nav-link btn btn-dark">Mon compte</button></a>
+                    <a class="nav-link active" href="{{ path('logout') }}"><button type="button" class="nav-link btn btn-dark">Déconnexion</button></a>
+                {% else %}
+                    <a class="nav-link active" href="{{ path('login') }}"><button type="button" class="nav-link btn btn-dark">Connexion</button></a>
+                    <a class="nav-link active" href="{{ path('register') }}"><button type="button" class="nav-link btn btn-dark">Inscription</button></a>
+                {% endif %}
             </div>
+            -->
+            <div class="collapse navbar-collapse text-center" id="navbarsExample04">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{{ path('menu') }}">Menus</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{{ path('card') }}">Carte</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{{ path('schedule') }}">Horaires</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{{ path('contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{{ path('reservation') }}">Réservation</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-item-custom">
+                    {% if app.user %}
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="{{ path('account') }}">Mon compte</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="{{ path('logout') }}">Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="{{ path('login') }}">Connexion</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="{{ path('register') }}">Inscription</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <!--
+                <div class="navbar-nav navbar-item-custom">
+                    {% if app.user %}
+                        <a class="nav-link active" href="{{ path('account') }}"><button type="button" class="nav-link btn btn-dark">Mon compte</button></a>
+                        <a class="nav-link active" href="{{ path('logout') }}"><button type="button" class="nav-link btn btn-dark">Déconnexion</button></a>
+                    {% else %}
+                        <a class="nav-link active" href="{{ path('login') }}"><button type="button" class="nav-link btn btn-dark">Connexion</button></a>
+                        <a class="nav-link active" href="{{ path('register') }}"><button type="button" class="nav-link btn btn-dark">Inscription</button></a>
+                    {% endif %}
+                </div>
+                -->
         </div>
     </nav>
 

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Mon compte</h1>
+    </div>
+
+    <div class="mx-2">
+        <p>
+            Bienvenue dans votre compte {{ app.user.firstName }},
+        </p>
+        <p>
+            Vous pouvez ici modifier vos données personnelles
+        </p>
+        <a href="{{ path('account_password') }}">Modifier mon mot de passe</a>
+        <br>
+        <a href="{{ path('account_message') }}">Modifier mes informations complémentaires (allergies, etc...)</a>
+    </div>
+
+{% endblock %}
+
