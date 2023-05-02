@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Liste des plats</h1>
+    </div>
+    <hr>
+    <div class="mx-2">
+        <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+        <hr>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Chemin fichier Image</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dish in dishes %}
+                <tr>
+                    <td>{{ dish.title }}</td>
+                    <td>{{ dish.category }}</td>
+                    <td>{{ dish.description }}</td>
+                    <td>/uploads/{{ dish.imagepath }}</td>
+                    <td>{{ dish.price }}</td>
+                    <td><a href="{{ path('dish', { 'dish' : dish.title } ) }}"><img src="{{ asset('assets/img/modify.png') }}" alt="modifier le plat" class="icon-modify"></a></td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

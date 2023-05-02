@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Page d'administration des horaires du Restaurant</h1>
+    </div>
+    <hr>
+    <div class="mx-2">
+        <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+        <hr>
+        {% for day in days %}
+            <a class="nav-link active" href="{{ path('day', { 'day' : day|lower } ) }}">{{ day }}</a>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+

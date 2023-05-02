@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Page d'administration des informations générales du Restaurant</h1>
+    </div>
+    <hr>
+    <div class="mx-2">
+        <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+        <hr>
+        {% if notification %}
+            <div class="alert alert-info">{{ notification }}</div>
+        {% endif %}
+        {{ form(form) }}
+    </div>
+
+
+{% endblock %}

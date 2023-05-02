@@ -5,5 +5,16 @@
         <h1>Page d'administration</h1>
     </div>
 
+    <div class="mx-2">
+        <p>Bienvenue sur le portail d'administration. Vous pouvez ici changer les données affichées sur le site</p>
+        <hr>
+        <a href="{{ path('admin_infos') }}">Modifier ici les données principales du Restaurant</a>
+        <br>
+        <a href="{{ path('admin_schedule') }}">Modifier ici les horaires d'ouverture du Restaurant</a>
+        <br>
+        <a href="{{ path('admin_card') }}">Modifier ici la carte du Restaurant</a>
+        <hr>
+    </div>
+
 {% endblock %}
 

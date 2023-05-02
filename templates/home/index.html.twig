@@ -3,5 +3,22 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block content %}
-    <h1>Page d'accueil</h1>
+    <div class="text-center">
+        <h1>Page d'accueil</h1>
+    </div>
+    <div class="row mx-2">
+            {% for dish in dishes %}
+                <div class="col-md-4">
+                    <div class="card d-flex" style="width: 18rem;">
+                        <img class="card-img-top" src="/uploads/{{ dish.imagepath }}" alt="{{ dish.description }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ dish.title }}</h5>
+                            <p class="card-text">{{ dish.category }}</p>
+                            <p class="card-text">{{ dish.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+
 {% endblock %}

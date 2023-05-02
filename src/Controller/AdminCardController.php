@@ -8,7 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+
+class AdminCardController extends AbstractController
 {
     private $entityManager;
 
@@ -16,13 +17,15 @@ class HomeController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/', name: 'home')]
+    #[Route('/admin/carte', name: 'admin_card')]
     public function index(): Response
     {
         $dishes = $this->entityManager->getRepository(Dish::class)->findAll();
 
-        return $this->render('home/index.html.twig', [
+
+        return $this->render('admin/admin_card_list.html.twig', [
             'dishes' => $dishes,
         ]);
     }
+
 }
