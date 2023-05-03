@@ -54,13 +54,33 @@ class DishRepository extends ServiceEntityRepository
 //        ;
 //    }
 
+//    public function findOneByTitle($value): ?Dish
+//    {
+//       return $this->createQueryBuilder('d')
+//            ->andWhere('d.title = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
     public function findOneByTitle($value): ?Dish
     {
-       return $this->createQueryBuilder('d')
-            ->andWhere('d.title = :val')
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.Title = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
+            ;
+    }
+    public function findByCategory($value): array
+    {
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.Category = :val')
+            ->setParameter('val', $value)
+            ->orderBy('d.id', 'ASC')
+            ->setMaxResults(100)
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

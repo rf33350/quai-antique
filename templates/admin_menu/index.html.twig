@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration des menus</h1>
+    </div>
+
+
+    <div class="mx-2">
+    <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+    <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for menu in menus %}
+                <tr>
+                    <td>{{ menu.id }}</td>
+                    <td>{{ menu.title }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_menu_show', {'id': menu.id}) }}">lister</a>
+                        |
+                        <a href="{{ path('app_admin_menu_edit', {'id': menu.id}) }}">modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_admin_menu_new') }}">Créer un nouveau menu</a>
+    </div>
+
+{% endblock %}

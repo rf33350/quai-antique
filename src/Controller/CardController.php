@@ -19,10 +19,14 @@ class CardController extends AbstractController
     #[Route('/carte', name: 'card')]
     public function index(): Response
     {
-        $dishes = $this->entityManager->getRepository(Dish::class)->findAll();
+        $entrees = $this->entityManager->getRepository(Dish::class)->findByCategory('entrée');
+        $plats = $this->entityManager->getRepository(Dish::class)->findByCategory('plat');
+        $desserts = $this->entityManager->getRepository(Dish::class)->findByCategory('dessert');
 
         return $this->render('card/index.html.twig', [
-            'dishes' => $dishes,
+            'entrees' => $entrees,
+            'plats' => $plats,
+            'desserts' => $desserts,
         ]);
     }
 }

@@ -19,16 +19,45 @@ h1  {
     height: auto;
 }
 
-
-
-.facebook {
-    width: 25px;
-    height: auto;
+.imagesize {
+    height: 200px;
+    width: 300px;
+    border-radius: 75px 75px 75px 75px;
 }
 
-.instagram {
-    width: 25px;
-    height: auto;
+.img-container {
+    position: relative;
+}
+.title {
+    opacity: 0;
+    font-size: 40px;
+    position: absolute;
+    color: #613c08;
+    background-color: rgba(200, 200, 200, 0.5);
+    width: 300px;
+    height: 200px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    text-align: center;
+    border-radius: 75px;
+}
+.img-container .title:hover {
+    opacity: 1;
+    border-radius: 75px;
+}
+.img-container .title .text {
+    height: 0;
+    opacity: 1;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+}
+.img-container .title:hover .text {
+    opacity: 1;
+    transform: translateY(75px);
+    -webkit-transform: translateY(75px);
 }
 
 .footer{

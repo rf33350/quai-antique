@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
 {% block content %}
-    <h1>Page des menus</h1>
+    <div class="text-center">
+        <h1>Nos menus</h1>
+    </div>
+    <br>
+    <br>
+    <div class="mx-2">
+        {% for menu in menus %}
+            <hr>
+            <div class="text-center">
+                <h2>{{ menu }}</h2>
+                <hr>
+                {% for data in datas %}
+                    {% if data.menu == menu %}
+                        <div>
+                            <h4>{{ data.formule }}</h4>
+                            <p>{{ data.description }}</p>
+                            <p>{{ data.prix }}€</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <br>
+        {% endfor %}
+    </div>
 {% endblock %}

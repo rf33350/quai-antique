@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration des formules</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for formula in formulas %}
+                <tr>
+                    <td>{{ formula.title }}</td>
+                    <td>{{ formula.description }}</td>
+                    <td>{{ formula.price }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_formula_show', {'id': formula.id}) }}">lister</a>
+                        |
+                        <a href="{{ path('app_admin_formula_edit', {'id': formula.id}) }}">modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_admin_formula_new') }}"><button class="btn btn-dark">Créer une nouvelle formule</button></a>
+
+    </div>
+    <br>
+{% endblock %}

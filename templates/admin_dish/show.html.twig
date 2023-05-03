@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration du plat "{{ dish.title }}"</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('app_admin_dish_index') }}">Retour à la liste des plats</a>
+        <hr>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ dish.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ dish.Title }}</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>{{ dish.Category }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ dish.Description }}</td>
+                </tr>
+                <tr>
+                    <th>ImagePath</th>
+                    <td>{{ dish.ImagePath }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>{{ dish.Price }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_admin_dish_edit', {'id': dish.id}) }}"><button class="btn btn-dark">Modifier</button></a>
+        <br>
+        <br>
+        {{ include('admin_dish/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dish index{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration des plats</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                    <th>Description</th>
+                    <th>ImagePath</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for dish in dishes %}
+                <tr>
+                    <td>{{ dish.Title }}</td>
+                    <td>{{ dish.Category }}</td>
+                    <td>{{ dish.Description }}</td>
+                    <td>{{ dish.ImagePath }}</td>
+                    <td>{{ dish.Price }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_dish_show', {'id': dish.id}) }}">lister</a>
+                        |
+                        <a href="{{ path('app_admin_dish_edit', {'id': dish.id}) }}">modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_admin_dish_new') }}"><button class="btn btn-dark">Créer un nouveau plat</button></a>
+    </div>
+{% endblock %}

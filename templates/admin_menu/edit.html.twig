@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration du menu "{{ menu.title }}"</h1>
+    </div>
+    <div class="mx-2">
+        <a href="{{ path('app_admin_menu_index') }}">Retour à la liste des menus</a>
+        <hr>
+        {{ include('admin_menu/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <br>
+
+    </div>
+{% endblock %}

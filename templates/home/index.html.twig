@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
 {% block content %}
     <div class="text-center">
-        <h1>Page d'accueil</h1>
+        <h1>Bienvenue au Quai Antique</h1>
     </div>
-    <div class="row mx-2">
+    <div class="row mt-4 mx-2">
             {% for dish in dishes %}
-                <div class="col-md-4">
-                    <div class="card d-flex" style="width: 18rem;">
-                        <img class="card-img-top" src="/uploads/{{ dish.imagepath }}" alt="{{ dish.description }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ dish.title }}</h5>
-                            <p class="card-text">{{ dish.category }}</p>
-                            <p class="card-text">{{ dish.description }}</p>
-                        </div>
+                <div class="mt-4 col-xl-3 col-md-6 col-sm-12 d-flex justify-content-center align-items-center img-container">
+                    <img class="imagesize"
+                         src="/uploads/{{ dish.imagepath }}"
+                         alt="{{ dish.description }}"
+                         title="{{ dish.title }}">
+                    <div class="title">
+                        <div class="text">{{ dish.title }}</div>
                     </div>
                 </div>
             {% endfor %}
     </div>
 
+    <div class="text-center mt-4">
+        <a href="{{ path('reservation') }}"><button class="btn btn-dark">Réserver un table</button></a>
+    </div>
 {% endblock %}
