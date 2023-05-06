@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration des disponibilités</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('admin') }}">Retour à la page générale d'administration</a>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Nombres de places disponibles</th>
+                    <th>Service</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for disponibility in disponibilities %}
+                <tr>
+                    <td>{{ disponibility.id }}</td>
+                    <td>{{ disponibility.date ? disponibility.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ disponibility.availableSeats }}</td>
+                    <td>{{ disponibility.service }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_dispo_show', {'id': disponibility.id}) }}">Lister</a>
+                        |
+                        <a href="{{ path('app_admin_dispo_edit', {'id': disponibility.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_admin_dispo_new') }}">Créer une nouvelle disponibilité</a>
+        <br>
+        <a href="{{ path('app_admin_dispo_new_multiple') }}">Créer une nouvelle liste de disponibilités</a>
+    </div>
+{% endblock %}

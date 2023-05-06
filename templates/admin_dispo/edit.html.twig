@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration de la formule "{{ disponibility.date|date('d-m-Y') }} - {{ disponibility.service }}"</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('app_admin_dispo_index') }}">Retour à la liste</a>
+        <hr>
+        {{ include('admin_dispo/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <br>
+        {{ include('admin_dispo/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

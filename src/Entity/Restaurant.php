@@ -36,6 +36,12 @@ class Restaurant
     #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Menu::class)]
     private Collection $menus;
 
+    #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Disponibility::class)]
+    private Collection $disponibilities;
+
+    #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
 
     public function __construct()
     {
@@ -43,6 +49,8 @@ class Restaurant
         $this->images = new ArrayCollection();
         $this->dishes = new ArrayCollection();
         $this->menus = new ArrayCollection();
+        $this->disponibilities = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -208,6 +216,66 @@ class Restaurant
 
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * @return Collection<int, Disponibility>
+     */
+    public function getDisponibilities(): Collection
+    {
+        return $this->disponibilities;
+    }
+
+    public function addDisponibility(Disponibility $disponibility): self
+    {
+        if (!$this->disponibilities->contains($disponibility)) {
+            $this->disponibilities->add($disponibility);
+            $disponibility->setRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDisponibility(Disponibility $disponibility): self
+    {
+        if ($this->disponibilities->removeElement($disponibility)) {
+            // set the owning side to null (unless already changed)
+            if ($disponibility->getRestaurant() === $this) {
+                $disponibility->setRestaurant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getRestaurant() === $this) {
+                $reservation->setRestaurant(null);
+            }
+        }
+
+        return $this;
     }
 
 }

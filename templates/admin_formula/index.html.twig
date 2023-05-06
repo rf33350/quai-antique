@@ -13,6 +13,7 @@
                 <tr>
                     <th>Titre</th>
                     <th>Description</th>
+                    <th>Menu</th>
                     <th>Prix</th>
                     <th>Actions</th>
                 </tr>
@@ -22,6 +23,7 @@
                 <tr>
                     <td>{{ formula.title }}</td>
                     <td>{{ formula.description }}</td>
+                    <td>{{ formula.menu }}</td>
                     <td>{{ formula.price }}</td>
                     <td>
                         <a href="{{ path('app_admin_formula_show', {'id': formula.id}) }}">lister</a>

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration de la disponibilité "{{ disponibility.date|date('d-m-Y') }} - {{ disponibility.service }}"</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('app_admin_dispo_index') }}">Revenir à la liste</a>
+        <hr>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ disponibility.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ disponibility.date|date('d-m-Y') }}</td>
+                </tr>
+                <tr>
+                    <th>AvailableSeats</th>
+                    <td>{{ disponibility.availableSeats }}</td>
+                </tr>
+                <tr>
+                    <th>Service</th>
+                    <td>{{ disponibility.service }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_admin_dispo_edit', {'id': disponibility.id}) }}"><button class="btn btn-dark">Modifier</button></a>
+        <br>
+        <br>
+        {{ include('admin_dispo/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
