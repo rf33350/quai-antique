@@ -5,5 +5,12 @@
         <h1>Page de Reservation</h1>
     </div>
 
+    <div class="mx-2">
+        {% if notificationdanger %}
+            <div class="alert alert-danger">{{ notificationdanger }}</div>
+        {% endif %}
+
+        {{ form(form) }}
+    </div>
 {% endblock %}
 
