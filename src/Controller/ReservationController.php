@@ -34,6 +34,8 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $askedSeats = $form->get('seats')->getData();
             $date = $form->get('date')->getData();
+            $hour = $form->get('arrivalHour')->getData();
+            $arrivalHour = \DateTime::createFromFormat('H:i:s',$hour);
             $service = $form->get('service')->getData();
             $dispo = $disporepo->findOneBy([
                 'date' => $date,
@@ -41,6 +43,7 @@ class ReservationController extends AbstractController
             ]);
             if ($dispo->getAvailableSeats() > $askedSeats) {
                 $restaurant = $this->entityManager->getRepository(Restaurant::class)->findOneById(1);
+                $reservation->setArrivalHour($arrivalHour);
                 $reservation->setRestaurant($restaurant);
                 $newValSeats = $dispo->getAvailableSeats() - $askedSeats;
                 $dispo->setAvailableSeats($newValSeats);
