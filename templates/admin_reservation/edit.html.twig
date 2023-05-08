@@ -10,8 +10,11 @@
     <div class="mx-2">
         <a href="{{ path('app_admin_reservation_index') }}">Retour à la liste des réservations</a>
         <hr>
-    {{ include('admin_reservation/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-    <br>
-    {{ include('admin_reservation/_delete_form.html.twig') }}
+        {% if notificationDanger %}
+            <div class="alert alert-info">{{ notificationDanger }}</div>
+        {% endif %}
+        {{ include('admin_reservation/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <br>
+        {{ include('admin_reservation/_delete_form.html.twig') }}
     </div>
 {% endblock %}

@@ -16,7 +16,6 @@ class MenuType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre',
             ])
-            ->add('restaurant')
         ;
     }
 

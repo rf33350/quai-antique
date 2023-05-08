@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Disponibility;
+use App\Entity\Restaurant;
 use App\Form\DisponibilityListType;
 use App\Form\DisponibilityType;
 use App\Repository\DisponibilityRepository;
@@ -36,9 +37,6 @@ class AdminDispoController extends AbstractController
         $disponibility = new Disponibility();
         $form = $this->createForm(DisponibilityType::class, $disponibility);
         $form->handleRequest($request);
-        /*$restaurant = $restaurantRepo->findOneById(1);
-        $seats = $restaurant->getSeatNumber();
-        $form->get('availableSeats')->setData($seats);*/
 
         if ($form->isSubmitted() && $form->isValid()) {
             $disponibilityRepository->save($disponibility, true);
@@ -64,7 +62,7 @@ class AdminDispoController extends AbstractController
             $services = ['midi', 'soir'];
             $seats = $form->get('availableSeats')->getData();
             $startDate = $form->get('date-debut')->getData();
-            $restaurant = $form->get('restaurant')->getData();
+            $restaurant = $this->entityManager->getRepository(Restaurant::class)->findOneById(1);
             $endDate = $form->get('date-fin')->getData();
             $endDate->modify('+1 day');
             $interval = \DateInterval::createFromDateString('1 day');

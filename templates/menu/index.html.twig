@@ -5,17 +5,15 @@
         <h1>Nos menus</h1>
     </div>
     <br>
-    <br>
     <div class="mx-2">
         {% for menu in menus %}
-            <hr>
-            <div class="text-center">
-                <h2>{{ menu }}</h2>
-                <hr>
+
+            <div class="text-center card">
+                <h2 class="mytitle">{{ menu|upper }}</h2>
                 {% for data in datas %}
                     {% if data.menu == menu %}
                         <div>
-                            <h4>{{ data.formule }}</h4>
+                            <h5 class="mytitle">{{ data.formule }}</h5>
                             <p>{{ data.description }}</p>
                             <p>{{ data.prix| number_format(2, ',', ' ') }}€</p>
                         </div>

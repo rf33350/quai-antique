@@ -19,40 +19,40 @@ class ChangeScheduleType extends AbstractType
                 'disabled' => true,
                 'label' => 'Jour',
                 'attr' => [
-                    'class' => 'col-md-4', // ajout de la classe Bootstrap
+                    'class' => 'form-control col-md-4', // ajout de la classe Bootstrap
                 ],
             ])
             ->add('mourningStartTime', TimeType::class, [
                 'label' => 'Horaire d\'ouverture midi',
-                'widget' => 'choice',
+                'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'col-md-4', // ajout de la classe Bootstrap
+                    'class' => 'form-control col-md-4', // ajout de la classe Bootstrap
                 ],
             ])
             ->add('mourningStopTime', TimeType::class, [
                 'label' => 'Horaire de fermeture midi',
-                'widget' => 'choice',
+                'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'col-md-4', // ajout de la classe Bootstrap
+                    'class' => 'form-control col-md-4', // ajout de la classe Bootstrap
                 ],
             ])
             ->add('eveningStartTime', TimeType::class, [
                 'label' => 'Horaire d\'ouverture soir',
-                'widget' => 'choice',
+                'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'col-md-4', // ajout de la classe Bootstrap
+                    'class' => 'form-control col-md-4', // ajout de la classe Bootstrap
                 ],
             ])
             ->add('eveningStopTime', TimeType::class, [
                 'label' => 'Horaire de fermeture soir',
-                'widget' => 'choice',
+                'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'col-md-4', // ajout de la classe Bootstrap
+                    'class' => 'form-control col-md-4', // ajout de la classe Bootstrap
                 ],
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-dark mt-4'
+                    'class' => 'btn btn-custom mt-4'
                 ],
                 'label' => 'Mettre à jour'
             ])

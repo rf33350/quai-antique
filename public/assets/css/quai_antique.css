@@ -1,10 +1,9 @@
 * {
-    font-family: Lora, Montserrat, Hind Madurai ;
+    font-family: 'Hind Madurai', sans-serif;
 }
 
-
 h1  {
-    font-family: Montserrat;
+    font-family: 'Lora', serif;
 }
 .navbar{
     background-color: #B6AC97;
@@ -29,7 +28,7 @@ h1  {
     opacity: 0;
     font-size: 40px;
     position: absolute;
-    color: #613c08;
+    color: #906427;
     background-color: rgba(200, 200, 200, 0.5);
     width: 300px;
     height: 200px;
@@ -86,4 +85,13 @@ h1  {
 .item3 {
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
+}
+
+.btn-custom {
+    background-color: #906427;
+    color: whitesmoke;
+}
+
+.mytitle {
+    color: #906427;
 }

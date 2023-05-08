@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Disponibility;
+use App\Entity\Restaurant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,6 +24,9 @@ class DisponibilityRepository extends ServiceEntityRepository
 
     public function save(Disponibility $entity, bool $flush = false): void
     {
+        $restaurant = $this->getEntityManager()->getRepository(Restaurant::class)->findOneById(1);
+        $entity->setRestaurant($restaurant);
+
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {

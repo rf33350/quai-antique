@@ -42,7 +42,6 @@ class DisponibilityListType extends AbstractType
                     'class' => 'col-md-3', // ajout de la classe Bootstrap
                 ]
             ])
-            ->add('restaurant')
         ;
     }
 

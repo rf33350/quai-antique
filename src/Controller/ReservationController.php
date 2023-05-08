@@ -28,10 +28,17 @@ class ReservationController extends AbstractController
         $errorMessage = null;
         $notificationDanger = '';
 
-
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class,$reservation);
+
+        if ($this->getUser()) {
+            $form->get('firstName')->setData($this->getUser()->getFirstName());
+            $form->get('lastName')->setData($this->getUser()->getLastName());
+            $form->get('email')->setData($this->getUser()->getEmail());
+        }
+
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $firstName = $form->get('firstName')->getData();
             $lastName = $form->get('lastName')->getData();

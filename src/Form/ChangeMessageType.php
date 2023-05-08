@@ -33,7 +33,7 @@ class ChangeMessageType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-dark mt-4'
+                    'class' => 'btn btn-custom mt-4'
                 ],
                 'label' => 'Mettre à jour'
             ])

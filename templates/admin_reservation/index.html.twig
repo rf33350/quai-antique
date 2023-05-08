@@ -13,7 +13,7 @@
                 {{ form(form) }}
             </div>
         </div>
-        <a href="{{ path('app_admin_reservation_index') }}"><button class="btn btn-dark">Toutes les réservations</button></a>
+        <a href="{{ path('app_admin_reservation_index') }}"><button class="btn btn-custom">Toutes les réservations</button></a>
         <br>
         <br>
         <table class="table">
@@ -54,7 +54,7 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{{ path('app_admin_reservation_new') }}">Créer une nouvelle réservation</a>
+        <a href="{{ path('app_admin_reservation_new') }}"><button class="btn btn-custom">Créer une nouvelle réservation</button></a>
     </div>
 
 {% endblock %}

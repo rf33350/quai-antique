@@ -6,44 +6,51 @@
     </div>
 
     <div class="mx-2">
-
-        <h2>Entrées</h2>
+        <div class="card px-2">
+            <h2 class="mytitle">Entrées</h2>
+            <br>
+            {% for entree in entrees %}
+                    <div class="d-flex justify-content-between">
+                        <h5>{{ entree.title }}</h5>
+                        <p>{{ entree.price| number_format(2, ',', ' ') }}€</p>
+                    </div>
+            {% endfor %}
+        </div>
         <br>
-        {% for entree in entrees %}
+        <br>
+        <div class="card px-2">
+            <h2 class="mytitle">Plats</h2>
+            <br>
+            {% for plat in plats %}
                 <div class="d-flex justify-content-between">
-                    <h5>{{ entree.title }}</h5>
-                    <p>{{ entree.price| number_format(2, ',', ' ') }}€</p>
+                    <h5>{{ plat.title }}</h5>
+                    <p>{{ plat.price| number_format(2, ',', ' ') }}€</p>
                 </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
         <br>
         <br>
-        <h2>Plats</h2>
-        <br>
-        {% for plat in plats %}
-            <div class="d-flex justify-content-between">
-                <h5>{{ plat.title }}</h5>
-                <p>{{ plat.price| number_format(2, ',', ' ') }}€</p>
-            </div>
-        {% endfor %}
-        <br>
-        <br>
-        <h2>Desserts</h2>
-        <br>
-        {% for dessert in desserts %}
-            <div class="d-flex justify-content-between">
-                <h5>{{ dessert.title }}</h5>
-                <p>{{ dessert.price| number_format(2, ',', ' ') }}€</p>
-            </div>
-        {% endfor %}
+        <div class="card px-2">
+            <h2 class="mytitle">Desserts</h2>
+            <br>
+            {% for dessert in desserts %}
+                <div class="d-flex justify-content-between">
+                    <h5>{{ dessert.title }}</h5>
+                    <p>{{ dessert.price| number_format(2, ',', ' ') }}€</p>
+                </div>
+            {% endfor %}
+        </div>
         <br>
         <br>
-        <h2>Boissons</h2>
-        <br>
-        {% for boisson in boissons %}
-            <div class="d-flex justify-content-between">
-                <h5>{{ boisson.title }}</h5>
-                <p>{{ boisson.price| number_format(2, ',', ' ') }}€</p>
-            </div>
-        {% endfor %}
+        <div class="card px-2">
+            <h2 class="mytitle">Boissons</h2>
+            <br>
+            {% for boisson in boissons %}
+                <div class="d-flex justify-content-between">
+                    <h5>{{ boisson.title }}</h5>
+                    <p>{{ boisson.price| number_format(2, ',', ' ') }}€</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

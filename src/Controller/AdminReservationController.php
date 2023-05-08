@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use App\Classe\BookMail;
 use App\Entity\Reservation;
+use App\Entity\Restaurant;
 use App\Form\Reservation1Type;
 use App\Form\SortReservationType;
+use App\Repository\DisponibilityRepository;
 use App\Repository\ReservationRepository;
+use App\Repository\RestaurantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -67,13 +71,40 @@ class AdminReservationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_reservation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
+    public function edit(Request $request, Reservation $reservation, ReservationRepository $reservationRepository,DisponibilityRepository $disporepo, RestaurantRepository $restau): Response
     {
+        $notificationDanger = null;
+        $formerNbSeats = $reservation->getSeats();
+
         $form = $this->createForm(Reservation1Type::class, $reservation);
         $form->handleRequest($request);
 
+        $date = $reservation->getDate();
+        $service = $reservation->getService();
+
+        $dispo = $disporepo->findOneBy([
+            'date' => $date,
+            'service' => $service
+        ]);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $reservationRepository->save($reservation, true);
+            $seatsAvailable = $dispo->getAvailableSeats() + $formerNbSeats;
+
+            $newNbSeats = $form->get('seats')->getData();
+
+            if ($seatsAvailable >= $newNbSeats) {
+                $newValSeats = $seatsAvailable - $newNbSeats;
+                $dispo->setAvailableSeats($newValSeats);
+                $disporepo->save($dispo);
+
+                $restaurant = $restau->findOneById(1);
+                $reservation->setRestaurant($restaurant);
+                $reservationRepository->save($reservation, true);
+
+            } else {
+                $notificationDanger = 'Il n\'y a plus assez de places pour cette date pour modifier la réservation';
+                return $this->redirectToRoute('app_admin_reservation_edit', ['notificationDanger'=> $notificationDanger]);
+            }
 
             return $this->redirectToRoute('app_admin_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -81,6 +112,7 @@ class AdminReservationController extends AbstractController
         return $this->renderForm('admin_reservation/edit.html.twig', [
             'reservation' => $reservation,
             'form' => $form,
+            'notificationDanger'=> $notificationDanger,
         ]);
     }
 
