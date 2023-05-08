@@ -6,9 +6,11 @@ use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,6 +22,45 @@ class ReservationType extends AbstractType
         $hours = ['12h00', '12h15', '12h30', '12h45', '13h00', '13h15', '13h30', '13h45'];
 
         $builder
+            ->add('firstName', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '255',
+                    'placeholder' => 'Merci de renseigner votre prénom',
+                ],
+                'label' => 'Prénom',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Length(['min' => 2, 'max' => 255]),
+                ],
+            ])
+            ->add('lastName', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '255',
+                    'placeholder' => 'Merci de renseigner votre nom',
+                ],
+                'label' => 'Nom',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Length(['min' => 2, 'max' => 255]),
+                ],
+            ])
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '255',
+                    'placeholder' => 'Merci de renseigner votre email',
+                ],
+                'label' => 'Email',
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Length(['min' => 2, 'max' => 255]),
+                ],
+            ])
             ->add('date',DateType::class, [
                 'label' => 'Date de réservation',
                 'placeholder' => [
@@ -27,7 +68,10 @@ class ReservationType extends AbstractType
                 ],
                 'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'col-md-3', // ajout de la classe Bootstrap
+                    'class' => 'form-control', // ajout de la classe Bootstrap
+                ],
+                'constraints' => [
+                    new Assert\GreaterThan('today'),
                 ],
             ])
             ->add('service', ChoiceType::class, [
@@ -38,7 +82,7 @@ class ReservationType extends AbstractType
                     'soir' => 'soir',
                 ],
                 'attr' => [
-                    'class' => 'reservationFormService form-control col-md-3', // ajout de la classe Bootstrap
+                    'class' => 'reservationFormService form-control', // ajout de la classe Bootstrap
                 ],
             ])
             ->add('arrivalHour', ChoiceType::class, [
@@ -64,14 +108,13 @@ class ReservationType extends AbstractType
                 ],
                 'placeholder' => 'Choisir une heure',
                 'attr' => [
-                    'class' => 'arrival_hour form-control col-md-3', // ajout de la classe Bootstrap
+                    'class' => 'arrival_hour form-control', // ajout de la classe Bootstrap
                 ],
             ])
 
             ->add('seats', NumberType::class, [
                 'label' => 'Nombre de couverts',
                 'attr' => [
-                    'class' => 'col-md-3', // ajout de la classe Bootstrap,
                     'min' => 1,
                     'max' => 7,
                 ],
@@ -83,9 +126,6 @@ class ReservationType extends AbstractType
 
             ->add('allergy', TextareaType::class, [
                 'label' => 'Commentaires éventuelles, allergies',
-                'attr' => [
-                    'class' => 'col-md-3', // ajout de la classe Bootstrap
-                ],
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

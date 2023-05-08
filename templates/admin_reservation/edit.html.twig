@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Administration de la réservation Id = {{ reservation.id }}</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('app_admin_reservation_index') }}">Retour à la liste des réservations</a>
+        <hr>
+    {{ include('admin_reservation/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+    {{ include('admin_reservation/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

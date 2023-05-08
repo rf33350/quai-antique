@@ -34,6 +34,10 @@
                     <th>Price</th>
                     <td>{{ dish.Price }}</td>
                 </tr>
+                <tr>
+                    <th>Is Star?</th>
+                    <td>{% if dish.isStar %}True{% else %}False{% endif %}</td>
+                </tr>
             </tbody>
         </table>
 

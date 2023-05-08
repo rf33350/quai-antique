@@ -7,12 +7,19 @@
     <hr>
     <br class="my-3">
     <div class="text-center mx-2">
-        Merci d'avoir réservé au Quai Antique!
+        {{ reservation.firstName }} {{ reservation.lastName }},
         <br>
         <br>
-        Vous avez bien réservé le {{ reservation.date|date('d/m/Y') }} à {{ reservation.arrivalHour|date('H:i') }}
+        Vous avez réservé une table pour {{ reservation.seats }} le {{ reservation.date|date('d/m/Y') }} à {{ reservation.arrivalHour|date('H:i') }}
         <br>
-        Nombre de places réservées: {{ reservation.seats }}
+        <br>
+        Un message de confirmation a été envoyé à l'adresse {{ reservation.email }}
+        <br>
+        <br>
+        Merci pur votre confiance.
+        <br>
+        <br>
+        L'équipe du Quai Antique.
         <br>
     </div>
     <br class="my-3">

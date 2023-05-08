@@ -17,7 +17,7 @@
                         <div>
                             <h4>{{ data.formule }}</h4>
                             <p>{{ data.description }}</p>
-                            <p>{{ data.prix }}€</p>
+                            <p>{{ data.prix| number_format(2, ',', ' ') }}€</p>
                         </div>
                     {% endif %}
                 {% endfor %}

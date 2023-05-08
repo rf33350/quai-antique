@@ -31,6 +31,9 @@ class Dish
     #[ORM\ManyToOne(inversedBy: 'dishes')]
     private ?Restaurant $Relation = null;
 
+    #[ORM\Column]
+    private ?bool $isStar = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Dish
     public function setRelation(?Restaurant $Relation): self
     {
         $this->Relation = $Relation;
+
+        return $this;
+    }
+
+    public function isIsStar(): ?bool
+    {
+        return $this->isStar;
+    }
+
+    public function setIsStar(bool $isStar): self
+    {
+        $this->isStar = $isStar;
 
         return $this;
     }

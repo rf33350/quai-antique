@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Créer une nouvelle réservation</h1>
+    </div>
+
+    <div class="mx-2">
+        <a href="{{ path('app_admin_reservation_index') }}">Retour à la liste</a>
+        <hr>
+        {{ include('admin_reservation/_form.html.twig') }}
+    </div>
+
+{% endblock %}

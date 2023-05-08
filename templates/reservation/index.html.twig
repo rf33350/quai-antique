@@ -6,6 +6,9 @@
     </div>
 
     <div class="mx-2">
+        {% if errorMessage %}
+            <div class="alert alert-danger">{{ errorMessage }}</div>
+        {% endif %}
         {% if notificationdanger %}
             <div class="alert alert-danger">{{ notificationdanger }}</div>
         {% endif %}

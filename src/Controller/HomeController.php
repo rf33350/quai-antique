@@ -21,8 +21,14 @@ class HomeController extends AbstractController
     {
         $dishes = $this->entityManager->getRepository(Dish::class)->findAll();
 
+        foreach ($dishes as $dish) {
+            if($dish->isIsStar()) {
+                $dishStars[] = $dish;
+            }
+        }
+
         return $this->render('home/index.html.twig', [
-            'dishes' => $dishes,
+            'dishes' => $dishStars,
         ]);
     }
 }

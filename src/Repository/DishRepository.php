@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Dish;
+use App\Entity\Restaurant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,6 +24,9 @@ class DishRepository extends ServiceEntityRepository
 
     public function save(Dish $entity, bool $flush = false): void
     {
+        $restaurant = $this->getEntityManager()->getRepository(Restaurant::class)->findOneById(1);
+        $entity->setRelation($restaurant);
+
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {

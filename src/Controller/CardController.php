@@ -22,11 +22,14 @@ class CardController extends AbstractController
         $entrees = $this->entityManager->getRepository(Dish::class)->findByCategory('entrée');
         $plats = $this->entityManager->getRepository(Dish::class)->findByCategory('plat');
         $desserts = $this->entityManager->getRepository(Dish::class)->findByCategory('dessert');
+        $boissons =  $this->entityManager->getRepository(Dish::class)->findByCategory('boissons');
+
 
         return $this->render('card/index.html.twig', [
             'entrees' => $entrees,
             'plats' => $plats,
             'desserts' => $desserts,
+            'boissons' => $boissons,
         ]);
     }
 }

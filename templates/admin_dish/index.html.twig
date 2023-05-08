@@ -18,6 +18,7 @@
                     <th>Description</th>
                     <th>ImagePath</th>
                     <th>Prix</th>
+                    <th>IsStar</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td>{{ dish.Description }}</td>
                     <td>{{ dish.ImagePath }}</td>
                     <td>{{ dish.Price }}</td>
+                    <td>{% if dish.isStar %}True{% else %}False{% endif %}</td>
                     <td>
                         <a href="{{ path('app_admin_dish_show', {'id': dish.id}) }}">lister</a>
                         |

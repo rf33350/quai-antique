@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Dish;
+use App\Entity\Restaurant;
 use App\Form\DishType;
 use App\Repository\DishRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/dish')]
 class AdminDishController extends AbstractController
 {
+
     #[Route('/', name: 'app_admin_dish_index', methods: ['GET'])]
     public function index(DishRepository $dishRepository): Response
     {
@@ -29,7 +32,11 @@ class AdminDishController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $dishRepository->save($dish, true);
+
+
 
             return $this->redirectToRoute('app_admin_dish_index', [], Response::HTTP_SEE_OTHER);
         }
