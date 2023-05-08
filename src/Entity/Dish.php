@@ -4,10 +4,16 @@ namespace App\Entity;
 
 use App\Repository\DishRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
+use Symfony\Component\Validator\Constraints as Assert;
 
+#[Uploadable]
 #[ORM\Entity(repositoryClass: DishRepository::class)]
 class Dish
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -22,7 +28,12 @@ class Dish
     #[ORM\Column(length: 255)]
     private ?string $Description = null;
 
+    #[UploadableField(mapping: 'dish_images', fileNameProperty: "ImagePath")]
+    private ?File $ImageFile = null;
+
+
     #[ORM\Column(length: 255)]
+    #[Assert\File(maxSize: "2M", mimeTypes: ["image/jpeg", "image/png", "image/gif", "image/jpg"])]
     private ?string $ImagePath = null;
 
     #[ORM\Column]
@@ -80,11 +91,10 @@ class Dish
         return $this->ImagePath;
     }
 
-    public function setImagePath(string $ImagePath): self
+    public function setImagePath(string $ImagePath): void
     {
         $this->ImagePath = $ImagePath;
 
-        return $this;
     }
 
     public function getPrice(): ?float
@@ -121,5 +131,16 @@ class Dish
         $this->isStar = $isStar;
 
         return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->ImageFile;
+    }
+
+    public function setImageFile(File $ImageFile = null)
+    {
+        $this->ImageFile = $ImageFile;
+
     }
 }
