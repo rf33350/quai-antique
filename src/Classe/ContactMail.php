@@ -17,12 +17,12 @@ class ContactMail
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => "djaroul@hotmail.fr",
+                        'Email' => "michant@quai-antique-studi-faure.fr",
                         'Name' => "Le Quai Antique Restaurant"
                     ],
                     'To' => [
                         [
-                            'Email' => "djaroul@hotmail.fr",
+                            'Email' => "michant@quai-antique-studi-faure.fr",
                             'Name' => "Le Quai Antique Restaurant"
                         ]
                     ],
