@@ -32,11 +32,7 @@ class AdminDishController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             $dishRepository->save($dish, true);
-
-
 
             return $this->redirectToRoute('app_admin_dish_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -62,6 +58,7 @@ class AdminDishController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $dish->setImagePath('');
             $dishRepository->save($dish, true);
 
             return $this->redirectToRoute('app_admin_dish_index', [], Response::HTTP_SEE_OTHER);
@@ -77,6 +74,7 @@ class AdminDishController extends AbstractController
     public function delete(Request $request, Dish $dish, DishRepository $dishRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$dish->getId(), $request->request->get('_token'))) {
+            $dish->setImagePath('');
             $dishRepository->remove($dish, true);
         }
 
