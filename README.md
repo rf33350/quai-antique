@@ -71,4 +71,4 @@ A noter que pour ce type de péloiement la base de données et les fichiers doiv
 
 ## Support
 
-Pour tout besoin d'aide me contacter par [ce mail](mailto:faure@mail.fr).
+Pour tout besoin d'aide me contacter par [ce mail](mailto:djaroul@hotmail.fr).
