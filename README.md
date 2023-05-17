@@ -10,6 +10,8 @@ Ce fichier a pour but de décrire la démarche à suivre pour le déploiement en
 
 **Base de données** MySQL + migrations Symfony
 
+**Envoi de mails** [Mailjet](https://www.mailjet.com/fr/)
+
 ## Deploiement local
 
 Pour déployer ce site en local, il faut tout d'abord récupérer la dernière version à jour:
