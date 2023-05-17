@@ -16,7 +16,7 @@
     </head>
     <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark mx-2 mt-2">
+    <nav class="navbar-color-user navbar navbar-expand-md navbar-dark mx-2 mt-2">
         <div class="logo-container">
                 <a href="{{ path('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none mr-2">
                     <img src="{{ asset('assets/img/logo.PNG') }}" alt="logo du site" class="logo">
@@ -27,41 +27,41 @@
         </button>
             <div class="collapse navbar-collapse text-center" id="navbarsExample04">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link active" href="{{ path('menu') }}">Menus</a>
+                    <li class="nav-item  active">
+                        <a class="nav-link nav-link-text active" href="{{ path('menu') }}">Menus</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" href="{{ path('card') }}">Carte</a>
+                        <a class="nav-link nav-link-text active" href="{{ path('card') }}">Carte</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" href="{{ path('schedule') }}">Horaires</a>
+                        <a class="nav-link nav-link-text active" href="{{ path('schedule') }}">Horaires</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" href="{{ path('contact') }}">Contact</a>
+                        <a class="nav-link nav-link-text active" href="{{ path('contact') }}">Contact</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link active " href="{{ path('reservation') }}">Réservation</a>
+                        <a class="nav-link nav-link-text active " href="{{ path('reservation') }}">Réservation</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-item-custom">
                     {% if app.user %}
                         <li class="nav-item active">
-                            <a class="nav-link active" href="{{ path('account') }}">Mon compte</a>
+                            <a class="nav-link nav-link-text active" href="{{ path('account') }}">Mon compte</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link active" href="{{ path('logout') }}">Déconnexion</a>
+                            <a class="nav-link nav-link-text active" href="{{ path('logout') }}">Déconnexion</a>
                         </li>
                         {% if app.user and is_granted('ROLE_ADMIN')%}
                             <li class="nav-item active">
-                                <a class="nav-link active" href="{{ path('admin') }}">Administrer le site</a>
+                                <a class="nav-link nav-link-text active" href="{{ path('admin') }}">Administrer le site</a>
                             </li>
                         {% endif %}
                     {% else %}
                         <li class="nav-item active">
-                            <a class="nav-link active" href="{{ path('login') }}">Connexion</a>
+                            <a class="nav-link nav-link-text active" href="{{ path('login') }}">Connexion</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link active" href="{{ path('register') }}">Inscription</a>
+                            <a class="nav-link nav-link-text active" href="{{ path('register') }}">Inscription</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -72,7 +72,7 @@
         {% block content %}{% endblock %}
 
 
-    <footer class="footer text-center mx-2 my-2">
+    <footer class="footer footer-color-user text-center mx-2 my-2">
         <a href="{{ path('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none mt-4">
             <img src="{{ asset('assets/img/logo.PNG') }}" alt="logo du site" class="logo">
         </a>

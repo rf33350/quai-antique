@@ -9,9 +9,9 @@
 
     {% for info in infos %}
         <div class="grid-container mx-3">
-            <div class="item1">{{ info[0] }}</div>
+            <div class="item1"><p>{{ info[0] }}</p></div>
             <div class="item2">
-                {% if info[1] is null and info[2] is null and info[3] is null and info[4] is null %}
+                <p>{% if info[1] is null and info[2] is null and info[3] is null and info[4] is null %}
                     Fermé
                 {% else %}
                     {% if info[1] is null and info[2] is null %}
@@ -20,10 +20,10 @@
                         {% if info[1] is not null %} {{ info[1].format('H:i') }}{% endif %} |
                         {% if info[2] is not null %} {{ info[2].format('H:i') }}{% endif %}
                     {% endif %}
-                {% endif %}
+                {% endif %}</p>
             </div>
             <div class="item3">
-                {% if info[1] is null and info[2] is null and info[3] is null and info[4] is null %}
+                <p>{% if info[1] is null and info[2] is null and info[3] is null and info[4] is null %}
                 {% else %}
                     {% if info[3] is null and info[4] is null %}
                         Fermé le soir
@@ -31,7 +31,7 @@
                         {% if info[3] is not null %} {{ info[3].format('H:i') }}{% endif %} |
                         {% if info[4] is not null %} {{ info[4].format('H:i') }}{% endif %}
                     {% endif %}
-                {% endif %}
+                {% endif %}</p>
             </div>
         </div>
         <hr>
