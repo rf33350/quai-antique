@@ -4,6 +4,7 @@
 
 h1  {
     font-family: 'Lora', serif;
+    color: #906427;
 }
 .navbar{
     background-color: #B6AC97;
@@ -62,7 +63,7 @@ h1  {
 }
 
 .footer-text {
-    color: #47555E;
+    color: #392C1E;
 }
 
 .grid-container {

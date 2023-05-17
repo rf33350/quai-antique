@@ -73,10 +73,12 @@
 
 
     <footer class="footer text-center mx-2 my-2">
+        <a href="{{ path('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none mt-4">
+            <img src="{{ asset('assets/img/logo.PNG') }}" alt="logo du site" class="logo">
+        </a>
         <!-- Copyright -->
         <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="footer-text" href="{{ path('home') }}">Le Quai Antique Restaurant</a>
+            <p class="footer-text">© 2023 Copyright: <a class="footer-text" href="{{ path('home') }}">Le Quai Antique Restaurant</a></p>
         </div>
         <!-- Copyright -->
     </footer>

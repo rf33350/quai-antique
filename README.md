@@ -6,7 +6,9 @@ Ce fichier a pour but de décrire la démarche à suivre pour le déploiement en
 
 **Front** HTML + CSS + JS + Bootstrap
 
-**Back** PHP + SYMFONY
+**Back** PHP 8.1 + SYMFONY 6.1
+
+**Base de données** MySQL + migrations Symfony
 
 ## Deploiement local
 
@@ -46,16 +48,20 @@ Migrer les tables du projet vers la base de données.
 
 Lorsque la base de données a été migrée, il faut créer un administrateur afin de pouvoir modifier et ajouter des informations sur le site (plats, menus, réservations...)
 
+Alternativement à la migration Symfony, vous pouvez exécuter les commandes SQL du fichier '230516_rf_quai-antique_database_tables_SQL.sql' qui se trouve dans le dossier /sql du projet.
+
 ```bash
   INSERT INTO user (email, roles, password, first_name, last_name, allergy) VALUES ('XXXX', '["ROLE_USER","ROLE_ADMIN"]', 'YYYY', 'adminFirstName', 'adminLastName', '-');
 ```
 Où XXXX est l'email de l'administrateur du site, YYYY le mot de passe,
 Attention, il faut que le mot de passe soit au préalable hashé.
 
+Vous pouvez également exécuter les commandes du fichier '230516_rf_quai-antique_fixtures.sql' qui se trouve dans le dossier /sql du projet.
+
 Une fois les modifications apportées au code, vous pouvez lancer le serveur de symfony en local pour vérifier le fonctionnement du site
 
 ```bash
-  symfony server:start 
+  symfony server:start
 ```
 
 ## Deploiement en ligne
@@ -66,7 +72,7 @@ Dans le processus d'installation des dépendances symfony, ajouter l'installatio
   php composer.phar require symfony/apache-pack
 ```
 
-A noter que pour ce type de péloiement la base de données et les fichiers doivent être crée et importés selon le dispositif que l'hébergeur a mis en place.
+A noter que pour ce type de déploiement la base de données et les fichiers doivent être créée et importés selon le dispositif que l'hébergeur a mis en place.
 
 
 ## Support
