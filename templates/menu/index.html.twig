@@ -9,11 +9,11 @@
         {% for menu in menus %}
 
             <div class="text-center card">
-                <h2>{{ menu|upper }}</h2>
+                <h2 class="mytitle">{{ menu|upper }}</h2>
                 {% for data in datas %}
                     {% if data.menu == menu %}
                         <div>
-                            <h5>{{ data.formule }}</h5>
+                            <h5 class="mytitle">{{ data.formule }}</h5>
                             <p>{{ data.description }}</p>
                             <p>{{ data.prix| number_format(2, ',', ' ') }}€</p>
                         </div>

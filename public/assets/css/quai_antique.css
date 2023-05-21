@@ -1,19 +1,14 @@
 * {
-    font-family: 'Lora', serif;
+    font-family: 'Hind Madurai', sans-serif;
 }
 
-h1, h2, h5  {
-    font-family: 'Montserrat', sans-serif;
+h1  {
+    font-family: 'Lora', serif;
     color: #906427;
 }
-
-.navbar-color-user, .footer-color-user{
+.navbar{
     background-color: #B6AC97;
     border-radius: 5px;
-}
-
-.nav-link-text {
-    font-family: 'Hind Madurai', sans-serif;
 }
 
 .logo {
@@ -62,6 +57,11 @@ h1, h2, h5  {
     -webkit-transform: translateY(75px);
 }
 
+.footer{
+    background-color: #B6AC97;
+    border-radius: 5px;
+}
+
 .footer-text {
     color: #392C1E;
 }
@@ -91,4 +91,8 @@ h1, h2, h5  {
 .btn-custom {
     background-color: #906427;
     color: whitesmoke;
+}
+
+.mytitle {
+    color: #906427;
 }

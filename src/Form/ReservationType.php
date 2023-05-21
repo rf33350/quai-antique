@@ -21,6 +21,8 @@ class ReservationType extends AbstractType
     {
         $hours = ['12h00', '12h15', '12h30', '12h45', '13h00', '13h15', '13h30', '13h45'];
 
+        $dates = $options['dates'];
+
         $builder
             ->add('firstName', TextType::class, [
                 'attr' => [
@@ -68,7 +70,8 @@ class ReservationType extends AbstractType
                 ],
                 'widget' => 'single_text',
                 'attr' => [
-                    'class' => 'form-control', // ajout de la classe Bootstrap
+                    'class' => 'form-control datepicker', // ajout de la classe Bootstrap
+                    'data-disabled-dates' => json_encode($dates),
                 ],
                 'constraints' => [
                     new Assert\GreaterThan('today'),
@@ -140,6 +143,7 @@ class ReservationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Reservation::class,
+            'dates' => [],
         ]);
     }
 }

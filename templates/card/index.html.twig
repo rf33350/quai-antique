@@ -11,7 +11,7 @@
             <br>
             {% for entree in entrees %}
                     <div class="d-flex justify-content-between">
-                        <p>{{ entree.title }}</p>
+                        <h5>{{ entree.title }}</h5>
                         <p>{{ entree.price| number_format(2, ',', ' ') }}€</p>
                     </div>
             {% endfor %}
@@ -23,7 +23,7 @@
             <br>
             {% for plat in plats %}
                 <div class="d-flex justify-content-between">
-                    <p>{{ plat.title }}</p>
+                    <h5>{{ plat.title }}</h5>
                     <p>{{ plat.price| number_format(2, ',', ' ') }}€</p>
                 </div>
             {% endfor %}
@@ -35,7 +35,7 @@
             <br>
             {% for dessert in desserts %}
                 <div class="d-flex justify-content-between">
-                    <p>{{ dessert.title }}</p>
+                    <h5>{{ dessert.title }}</h5>
                     <p>{{ dessert.price| number_format(2, ',', ' ') }}€</p>
                 </div>
             {% endfor %}
@@ -47,7 +47,7 @@
             <br>
             {% for boisson in boissons %}
                 <div class="d-flex justify-content-between">
-                    <p>{{ boisson.title }}</p>
+                    <h5>{{ boisson.title }}</h5>
                     <p>{{ boisson.price| number_format(2, ',', ' ') }}€</p>
                 </div>
             {% endfor %}

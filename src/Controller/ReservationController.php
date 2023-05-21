@@ -28,8 +28,22 @@ class ReservationController extends AbstractController
         $errorMessage = null;
         $notificationDanger = '';
 
+        $tabs = $disporepo->findAll();
+        $dates = [];
+
+        foreach ($tabs as $tab ) {
+            $date = $tab->getDate();
+
+            if (!in_array($date, $dates)) {
+                $dates[] = $date;
+            }
+        }
+
+
         $reservation = new Reservation();
-        $form = $this->createForm(ReservationType::class,$reservation);
+        $form = $this->createForm(ReservationType::class, $reservation, [
+            'dates' => $dates,
+        ]);
 
         if ($this->getUser()) {
             $form->get('firstName')->setData($this->getUser()->getFirstName());
