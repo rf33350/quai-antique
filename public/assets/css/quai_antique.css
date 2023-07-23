@@ -96,3 +96,8 @@ h1  {
 .mytitle {
     color: #906427;
 }
+#map {
+    height: 30vh;
+    width: 60vw;
+    margin: 0 auto;
+}

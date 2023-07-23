@@ -52,7 +52,6 @@ class ReservationController extends AbstractController
         }
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $firstName = $form->get('firstName')->getData();
             $lastName = $form->get('lastName')->getData();

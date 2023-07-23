@@ -2,8 +2,9 @@
 
 {% block content %}
     <div class="text-center">
-        <h1>Formulaire de contact</h1>
+        <h1>Contact</h1>
     </div>
+
     <div class="container">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
@@ -14,4 +15,15 @@
     <div class="container">
         {{ form(form) }}
     </div>
+
+    <div class="container text-center">
+        <div id="weather"></div>
+        <div id="map"></div>
+    </div>
+    <br>
+{% endblock %}
+{% block jsaddress %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="{{ asset('assets/js/address.js') }}"></script>
 {% endblock %}

@@ -20,7 +20,7 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         $errorMessage = '';
         if ($error !== null && $error->getMessageKey() === 'Invalid credentials.') {
-            $errorMessage = 'Votre nom d\'utilisateur ou mot de passe est incorrect.';
+            $errorMessage = 'Votre email ou mot de passe est incorrect.';
         }
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
